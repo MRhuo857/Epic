@@ -341,6 +341,15 @@
     "@babel/helper-plugin-utils" "^7.8.3"
     "@babel/plugin-syntax-decorators" "^7.8.3"
 
+"@babel/plugin-proposal-decorators@^7.10.5":
+  version "7.10.5"
+  resolved "https://registry.npm.taobao.org/@babel/plugin-proposal-decorators/download/@babel/plugin-proposal-decorators-7.10.5.tgz#42898bba478bc4b1ae242a703a953a7ad350ffb4"
+  integrity sha1-QomLukeLxLGuJCpwOpU6etNQ/7Q=
+  dependencies:
+    "@babel/helper-create-class-features-plugin" "^7.10.5"
+    "@babel/helper-plugin-utils" "^7.10.4"
+    "@babel/plugin-syntax-decorators" "^7.10.4"
+
 "@babel/plugin-proposal-dynamic-import@^7.10.4", "@babel/plugin-proposal-dynamic-import@^7.8.3":
   version "7.10.4"
   resolved "https://registry.npm.taobao.org/@babel/plugin-proposal-dynamic-import/download/@babel/plugin-proposal-dynamic-import-7.10.4.tgz?cache=0&sync_timestamp=1593522928045&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40babel%2Fplugin-proposal-dynamic-import%2Fdownload%2F%40babel%2Fplugin-proposal-dynamic-import-7.10.4.tgz#ba57a26cb98b37741e9d5bca1b8b0ddf8291f17e"
@@ -469,7 +478,7 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.10.4"
 
-"@babel/plugin-syntax-decorators@^7.8.3":
+"@babel/plugin-syntax-decorators@^7.10.4", "@babel/plugin-syntax-decorators@^7.8.3":
   version "7.10.4"
   resolved "https://registry.npm.taobao.org/@babel/plugin-syntax-decorators/download/@babel/plugin-syntax-decorators-7.10.4.tgz?cache=0&sync_timestamp=1593521252748&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40babel%2Fplugin-syntax-decorators%2Fdownload%2F%40babel%2Fplugin-syntax-decorators-7.10.4.tgz#6853085b2c429f9d322d02f5a635018cdeb2360c"
   integrity sha1-aFMIWyxCn50yLQL1pjUBjN6yNgw=
@@ -7041,6 +7050,11 @@ mkdirp@^0.5.1, mkdirp@^0.5.3, mkdirp@^0.5.5, mkdirp@~0.5.1:
   integrity sha1-2Rzv1i0UNsoPQWIOJRKI1CAJne8=
   dependencies:
     minimist "^1.2.5"
+
+mobx@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.npm.taobao.org/mobx/download/mobx-6.0.1.tgz#ec23520848527bf7834d7b4c0b54b2a8eb6e7c14"
+  integrity sha1-7CNSCEhSe/eDTXtMC1SyqOtufBQ=
 
 move-concurrently@^1.0.1:
   version "1.0.1"
