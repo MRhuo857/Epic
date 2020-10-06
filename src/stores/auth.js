@@ -4,7 +4,7 @@ class AuthStore {
   @observable isLogin=false
   @observable isLoading=false
   @observable values={
-    username:'',
+    username:'huomeng',
     password:''
   };
   @action setIsLogin(isLogin){
@@ -38,4 +38,4 @@ class AuthStore {
     console.log('已注销')
   }
 }
-export default AuthStore;
+export{AuthStore};

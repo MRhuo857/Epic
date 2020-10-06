@@ -1,12 +1,12 @@
 import React from "react";
-import {observe} from "mobx-react";
+import {observer} from "mobx-react";
 import {useStores} from "../stores";
 
-const Component=observe(()=>{
+const Component=observer(()=>{
   const {AuthStore}=useStores();
   return (
     <>
-      <h1>Login:{AuthStore}</h1>
+      <h1>Login:{AuthStore.values.username}</h1>
     </>
   )
 })
