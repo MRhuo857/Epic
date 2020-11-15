@@ -1,6 +1,8 @@
 import React from "react";
 import {Form, Input, Button} from 'antd';
 import styled from 'styled-components';
+import {Auth} from "../model";
+import {useStores} from "../stores";
 
 const Wrapper = styled.div`
   max-width: 600px;
@@ -23,8 +25,17 @@ const tailLayout = {
   wrapperCol: {offset: 6, span: 16},
 };
 const Login = () => {
+  const {AuthStore}=useStores()
   const onFinish = values => {
-    console.log('Success:', values);
+    AuthStore.setUsername(values.username)
+    AuthStore.setPassword(values.password)
+    AuthStore.login()
+      .then(()=>{
+        console.log('登录成功')
+      }).catch((e)=>{
+        console.log(e)
+        console.log('登录失败')
+    })
   };
 
   const onFinishFailed = errorInfo => {
