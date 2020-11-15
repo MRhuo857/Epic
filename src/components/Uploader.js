@@ -3,19 +3,26 @@ import {observer} from "mobx-react";
 import {useStores} from "../stores";
 import {Upload} from 'antd';
 import {InboxOutlined} from '@ant-design/icons';
-import { message} from 'antd'
+import {message} from 'antd'
+import styled from 'styled-components';
 
 
 const {Dragger} = Upload;
 
-
-
-
+const Wrapper=styled.div`
+  border: 1px dashed #ccc;
+  margin-top: 30px;
+  padding: 20px;
+`
+const H1=styled.h1`
+  margin: 10px;
+  text-align: center;
+`
 const Uploader = observer(() => {
   const {ImageStore} = useStores()
   const props = {
-    showUploadList:false,
-    beforeUpload:file=>{
+    showUploadList: false,
+    beforeUpload: file => {
       ImageStore.setFile(file)
       ImageStore.setFilename(file.name)
       ImageStore.upload()
@@ -40,14 +47,26 @@ const Uploader = observer(() => {
           band files
         </p>
       </Dragger>
-      <div>
-        <h1>上穿结果：</h1>
-        {
-          ImageStore.serverFile?<div>{ImageStore.serverFile.attributes.url.attributes.url}</div>:null
-        }
-      </div>
+      {
+        ImageStore.serverFile ? <Wrapper>
+          <H1>上传结果</H1>
+          <ul>
+            <li>线上地址:
+            <a target="_blank"
+                   href={ImageStore.serverFile.attributes.url.attributes.url}>{ImageStore.serverFile.attributes.url.attributes.url}</a>
+            </li>
+            <li>文件名:
+            <span>{ImageStore.filename}</span>
+            </li>
+            <li>尺寸定制</li>
+            <li>
+              <input placeholder="最大宽度（可选）"/>
+              <input placeholder="最小宽度（可选）"/>
+            </li>
+          </ul>
+        </Wrapper> : null
+      }
     </div>
-
   )
 })
 export default Uploader;

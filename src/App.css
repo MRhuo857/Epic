@@ -24,3 +24,6 @@ main{
     padding: 30px 100px;
 
 }
+ul li{
+    list-style: none;
+}

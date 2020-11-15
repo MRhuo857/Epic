@@ -8,7 +8,7 @@ const Title=styled.div`
   padding: 20px 0;
   text-align: center;
   font-size: 18px;
-  color: #333333;
+  color: #666;
   border: 1px solid red;
 `
 const Main=styled.div`
@@ -36,7 +36,7 @@ const Tips=observer(()=>{
             <Uploader/>
           </Main> :
           <Title>
-            为了更好的使用本产品,请您先登录！
+            为了更好的使用本产品，请您先登录！
           </Title>
       }
 
