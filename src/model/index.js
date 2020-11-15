@@ -1,5 +1,7 @@
 
 import AV,{ User} from 'leancloud-storage'
+import {Upload} from "antd";
+import i from "styled-components/dist/styled-components-macro.esm";
 
 AV.init({
   appId: "oIAVQHGu3k80ou8msKitpx6k-gzGzoHsz",
@@ -26,6 +28,18 @@ const Auth={
   },
   getCurrentUser(){
     return User.current()
+  },
+}
+const Uploader={
+  add(file,filename){
+    const item= new AV.Object('img')
+    const avFile =new AV.File(filename,file)
+    item.set('filename',filename)
+    item.set('owner',AV.User.current())
+    item.set('url',avFile)
+    return new Promise((resolve, reject)=>{
+      item.save().then(serveFile=>resolve(serveFile),error=>reject(error))
+    })
   }
 }
-export {Auth}
+export {Auth,Uploader}
