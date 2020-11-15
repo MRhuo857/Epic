@@ -9,7 +9,7 @@ const Header = styled.header`
   display: flex;
   align-items: center;
   padding: 10px 100px;
-  background-color: #02101f;
+  background-color: rgb(52,58,64);
   color: #fff;
 `;
 
@@ -19,7 +19,8 @@ const StyledLink = styled(NavLink)`
   margin-left: 30px;
 
   &.active {
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid dodgerblue;
+    color:dodgerblue;
   }
 `;
 

@@ -3,6 +3,7 @@ import {observer} from "mobx-react";
 import {useStores} from "../stores";
 import {Upload} from 'antd';
 import {InboxOutlined} from '@ant-design/icons';
+import { message} from 'antd'
 
 
 const {Dragger} = Upload;
@@ -19,10 +20,10 @@ const Uploader = observer(() => {
       ImageStore.setFilename(file.name)
       ImageStore.upload()
         .then((serverFile) => {
-          console.log('上传成功')
+          message.success('上传成功')
           console.log(serverFile)
         }).catch(() => {
-        console.log("上传失败")
+        message.error('上传失败');
       })
       return false
     }
@@ -42,7 +43,7 @@ const Uploader = observer(() => {
       <div>
         <h1>上穿结果：</h1>
         {
-          ImageStore.serverFile?<div>{ImageStore.serverFile.attributes.url.attributes.url}</div>:""
+          ImageStore.serverFile?<div>{ImageStore.serverFile.attributes.url.attributes.url}</div>:null
         }
       </div>
     </div>
