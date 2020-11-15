@@ -1,6 +1,7 @@
 import React from "react";
 import {Form, Input, Button} from 'antd';
 import styled from 'styled-components';
+import {useStores} from "../stores";
 
 const Wrapper = styled.div`
   max-width: 600px;
@@ -23,10 +24,18 @@ const tailLayout = {
   wrapperCol: {offset: 6, span: 16},
 };
 const Register = () => {
+  const {AuthStore}= useStores()
   const onFinish = values => {
-    console.log('Success:', values);
+    AuthStore.setUsername(values.username)
+    AuthStore.setPassword(values.password)
+    AuthStore.register()
+      .then(() => {
+        console.logout('注册成功')
+      }).catch((e) => {
+      console.log(e);
+      console.log('注册失败-----')
+    })
   };
-
   const onFinishFailed = errorInfo => {
     console.log('Failed:', errorInfo);
   };
@@ -36,8 +45,8 @@ const Register = () => {
     return Promise.resolve()
   }
   const validateConfirm = ({getFieldValue}) => ({
-    validator(rule,value){
-      if (getFieldValue('password')===value) return Promise.resolve()
+    validator(rule, value) {
+      if (getFieldValue('password') === value) return Promise.resolve()
       return Promise.reject('两密码不一样')
     }
   })
