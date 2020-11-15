@@ -1,5 +1,5 @@
 
-import AV,{Query, User} from 'leancloud-storage'
+import AV,{ User} from 'leancloud-storage'
 
 AV.init({
   appId: "oIAVQHGu3k80ou8msKitpx6k-gzGzoHsz",

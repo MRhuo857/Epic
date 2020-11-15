@@ -1,7 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Button} from 'antd';
 import {NavLink} from 'react-router-dom';
 import styled from 'styled-components';
+import {useStores} from "../stores";
+import {observer} from "mobx-react";
 
 const Header = styled.header`
   display: flex;
@@ -30,8 +32,17 @@ const ButtonStyle = styled(Button)`
   margin: 0 10px;
 `
 
-function Component() {
-  const [isLogin, setLogin] = useState(false)
+const Component = observer(() => {
+  const {UserStore, AuthStore} = useStores()
+  const handelLogout = () => {
+    AuthStore.logout()
+  }
+  const handelLogin = () => {
+    console.log('登录成功')
+  }
+  const handelRegister = () => {
+    console.log('注册')
+  }
   return (
     <Header>
       <nav>
@@ -41,19 +52,20 @@ function Component() {
       </nav>
       <Login>
         {
-          isLogin ?
+          UserStore.currentUser ?
             <>
-              huo <ButtonStyle type="primary" onClick={()=>setLogin(false)} >注销</ButtonStyle>
+              {UserStore.currentUser.attributes.username}
+              <ButtonStyle type="primary" onClick={handelLogout}>注销</ButtonStyle>
             </> :
             <>
-              <ButtonStyle type="primary" onClick={()=>setLogin(true)}>登录</ButtonStyle>
-              <ButtonStyle type="primary">注册</ButtonStyle>
+              <ButtonStyle type="primary" onClick={handelLogin}>登录</ButtonStyle>
+              <ButtonStyle type="primary" onClick={handelRegister}>注册</ButtonStyle>
             </>
         }
       </Login>
 
     </Header>
   );
-}
+})
 
 export default Component;

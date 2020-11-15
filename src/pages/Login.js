@@ -1,7 +1,6 @@
 import React from "react";
 import {Form, Input, Button} from 'antd';
 import styled from 'styled-components';
-import {Auth} from "../model";
 import {useStores} from "../stores";
 
 const Wrapper = styled.div`
