@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button} from 'antd';
-import {NavLink} from 'react-router-dom';
+import {NavLink,useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import {useStores} from "../stores";
 import {observer} from "mobx-react";
@@ -34,14 +34,15 @@ const ButtonStyle = styled(Button)`
 
 const Component = observer(() => {
   const {UserStore, AuthStore} = useStores()
+  let history = useHistory();
   const handelLogout = () => {
     AuthStore.logout()
   }
   const handelLogin = () => {
-    console.log('登录成功')
+    history.push("/login")
   }
   const handelRegister = () => {
-    console.log('注册')
+    history.push("/register")
   }
   return (
     <Header>

@@ -2,7 +2,7 @@ import React from "react";
 import {Form, Input, Button} from 'antd';
 import styled from 'styled-components';
 import {useStores} from "../stores";
-
+import {NavLink,useHistory } from 'react-router-dom';
 const Wrapper = styled.div`
   max-width: 600px;
   margin: 20px auto;
@@ -25,12 +25,14 @@ const tailLayout = {
 };
 const Login = () => {
   const {AuthStore}=useStores()
+  let history = useHistory();
   const onFinish = values => {
     AuthStore.setUsername(values.username)
     AuthStore.setPassword(values.password)
     AuthStore.login()
       .then(()=>{
         console.log('登录成功')
+        history.push("/")
       }).catch((e)=>{
         console.log(e)
         console.log('登录失败')
