@@ -1,8 +1,10 @@
 import React from "react";
-import {Form, Input, Button} from 'antd';
+import {Form, Input, Button, message} from 'antd';
 import styled from 'styled-components';
 import {useStores} from "../stores";
 import {NavLink,useHistory } from 'react-router-dom';
+
+
 const Wrapper = styled.div`
   max-width: 600px;
   margin: 20px auto;
@@ -35,7 +37,7 @@ const Login = () => {
         history.push("/")
       }).catch((e)=>{
         console.log(e)
-        console.log('登录失败')
+      message.error('登录失败，检查用户名，密码是否正确');
     })
   };
 

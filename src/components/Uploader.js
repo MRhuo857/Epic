@@ -1,5 +1,5 @@
-import React from "react";
-import {observer} from "mobx-react";
+import React, {useRef} from "react";
+import {observer, useLocalStore} from "mobx-react";
 import {useStores} from "../stores";
 import {Upload} from 'antd';
 import {InboxOutlined} from '@ant-design/icons';
@@ -9,17 +9,47 @@ import styled from 'styled-components';
 
 const {Dragger} = Upload;
 
-const Wrapper=styled.div`
+const Wrapper = styled.div`
   border: 1px dashed #ccc;
   margin-top: 30px;
   padding: 20px;
+    ul li img{
+      max-width: 300px;
+    }
 `
-const H1=styled.h1`
+const H1 = styled.h1`
   margin: 10px;
   text-align: center;
 `
 const Uploader = observer(() => {
-  const {ImageStore} = useStores()
+  const {ImageStore, UserStore} = useStores()
+  const ref1 = useRef()
+  const ref2 = useRef()
+  const store = useLocalStore(() => ({
+    width: null,
+    setWidth(width) {
+      store.width = width
+    },
+    get widthStr() {
+      return store.width ? `/w/${store.width}` : ''
+    },
+    height: null,
+    setHeight(height) {
+      store.height = height
+    },
+    get heightStr() {
+      return store.height ? `/h/${store.height}` : ''
+    },
+    get fullStr() {
+      return ImageStore.serverFile.attributes.url.attributes.url + '?imageView2/0' + store.widthStr + store.heightStr
+    }
+  }));
+  const bindWidth=()=>{
+    store.setWidth(ref1.current.value)
+  }
+  const bindHeight=()=>{
+    store.setHeight(ref2.current.value)
+  }
   const props = {
     showUploadList: false,
     beforeUpload: file => {
@@ -51,19 +81,25 @@ const Uploader = observer(() => {
         ImageStore.serverFile ? <Wrapper>
           <H1>上传结果</H1>
           <ul>
-            <li>线上地址:
-            <a target="_blank"
-                   href={ImageStore.serverFile.attributes.url.attributes.url}>{ImageStore.serverFile.attributes.url.attributes.url}</a>
+            <li>原图预览:
+              <a target="_blank"
+                 href={ImageStore.serverFile.attributes.url.attributes.url}>{ImageStore.serverFile.attributes.url.attributes.url}</a>
             </li>
             <li>文件名:
-            <span>{ImageStore.filename}</span>
+              <span>{ImageStore.filename}</span>
+            </li>
+            <li>
+              <img src={ImageStore.serverFile.attributes.url.attributes.url}/>
             </li>
             <li>尺寸定制</li>
             <li>
-              <input placeholder="最大宽度（可选）"/>
-              <input placeholder="最小宽度（可选）"/>
+              <input placeholder="最大宽度（可选）" ref={ref1} onChange={bindWidth}/>
+              <input placeholder="最小高度（可选）" ref={ref2} onChange={bindHeight}/>
+          </li>
+            <li>
+              <a target="_blank" href={store.fullStr}>完成预览</a>
             </li>
-          </ul>
+        </ul>
         </Wrapper> : null
       }
     </div>
