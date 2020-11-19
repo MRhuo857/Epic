@@ -8,11 +8,9 @@ import {
 } from 'react-router-dom';
 
 ReactDOM.render(
-  <>
     <Router>
       <App />
-    </Router>
-  </>,
+    </Router>,
   document.getElementById('root')
 );
 serviceWorker.unregister();

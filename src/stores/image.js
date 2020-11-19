@@ -37,6 +37,10 @@ class ImageStore {
       })
     })
   }
+  @action reset() {
+    this.isLoading = false;
+    this.serverFile = null;
+  }
 }
 
   export default new ImageStore();
