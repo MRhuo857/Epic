@@ -3,7 +3,6 @@ import HistoryList from "../components/HistoryList";
 const History=()=> {
   return (
     <div>
-      <h1>History</h1>
       <HistoryList/>
     </div>
   )
