@@ -2,7 +2,7 @@ import React from "react";
 import {Form, Input, Button, message} from 'antd';
 import styled from 'styled-components';
 import {useStores} from "../stores";
-import {NavLink,useHistory } from 'react-router-dom';
+import {useHistory } from 'react-router-dom';
 
 
 const Wrapper = styled.div`

@@ -23,12 +23,15 @@ const HistoryList = observer(() => {
   const loadMore = () => {
     HistoryStore.find()
   }
-  useEffect(()=>{
-    console.log('进入')
-    return()=>{
-      HistoryStore.reset()
+  useEffect(() => {
+
+    return () => {
+      console.log('卸载')
+      HistoryStore.reset();
     }
-  },[])
+  }, []);
+
+
   return (
     <div>
       <InfiniteScroll
@@ -49,7 +52,7 @@ const HistoryList = observer(() => {
                 <h3>{item.attributes.filename}</h3>
               </Title>
               <div>
-                <a target="_blank" href={item.attributes.url.attributes.url}>预览</a>
+                <a target="_blank"  href={item.attributes.url.attributes.url}>预览</a>
               </div>
             </List.Item>
 

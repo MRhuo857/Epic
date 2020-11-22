@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Button} from 'antd';
 import {NavLink,useHistory } from 'react-router-dom';
 import styled from 'styled-components';
@@ -36,6 +36,9 @@ const ButtonStyle = styled(Button)`
 const Component = observer(() => {
   const {UserStore, AuthStore} = useStores()
   let history = useHistory();
+  useEffect(()=>{
+    UserStore.pullUser();
+  },[])
   const handelLogout = () => {
     AuthStore.logout()
   }

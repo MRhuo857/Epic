@@ -1,6 +1,4 @@
 import AV, {User} from 'leancloud-storage'
-import {Upload} from "antd";
-import i from "styled-components/dist/styled-components-macro.esm";
 
 AV.init({
   appId: "oIAVQHGu3k80ou8msKitpx6k-gzGzoHsz",
