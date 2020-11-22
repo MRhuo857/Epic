@@ -1,6 +1,7 @@
 {
   "name": "react-epic",
   "version": "0.1.0",
+  "homepage": "https://MRhuo857.github.io/Epic-website/",
   "private": true,
   "dependencies": {
     "@babel/core": "7.9.0",
